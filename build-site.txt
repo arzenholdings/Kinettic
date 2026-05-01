@@ -1,0 +1,274 @@
+You are building the production website for Kinetic Moto Sports.
+
+Build a premium electric moto / e-bike dealership website that combines:
+
+1. The product depth and category browsing of eMoto Superstore
+2. The visual energy, motion graphics, and premium feel of Dust Moto / Hightail-style sites
+3. A clean modern dealer experience that feels trustworthy, technical, and high-end
+
+DO NOT copy any website’s code, layout, images, or text. Use them only as inspiration for energy, motion, and structure.
+
+BRAND:
+Name: Kinetic Moto Sports
+Tagline: Electric Motion. Activated.
+Business type: Online electric moto / e-bike dealership with future service/showroom expansion
+Tone: premium, technical, fast, clean, confident
+Location note: Based in Washington / Pacific Northwest
+
+VISUAL STYLE:
+- Dark graphite / black background
+- Electric blue and cyan accents
+- White and soft gray text
+- Subtle neon glow
+- Motion streaks, dust particles, grid/parallax effects
+- Premium powersports feel
+- NOT cheap scooter-store
+- NOT generic SaaS
+- NOT raw catalog only
+
+TECH STACK:
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- lucide-react icons
+- shadcn/ui only if helpful
+- Mobile-first responsive design
+- Clean file/component structure
+- Easy for a non-expert to edit
+
+HOSTING / DOMAIN PLAN:
+- Site will be hosted on Vercel
+- Domain will be managed through GoDaddy DNS later
+- Do not build GoDaddy-specific code
+
+PRODUCT CATALOG:
+Create a local product data file that is easy to edit.
+
+Include these initial bikes:
+
+- Ventus V1+
+- Talaria MX5
+- Sur Ron Light Bee X
+- E-Ride Pro SS
+- Rawrr Mantis X
+- Arctic Leopard EXE
+- Stealth Bomber 3000W
+
+Each product should include:
+- name
+- slug
+- category
+- priceLabel
+- badge
+- shortDescription
+- image path
+- specs array
+- financingAvailable boolean
+
+Use placeholder pricing and clearly mark it as “Contact for pricing” or “Starting at TBD” unless exact pricing is provided.
+
+IMAGE HANDLING:
+Use local image paths like:
+
+/images/bikes/ventus-v1-plus.jpg
+/images/bikes/talaria-mx5.jpg
+/images/bikes/sur-ron-light-bee-x.jpg
+/images/bikes/e-ride-pro-ss.jpg
+/images/bikes/rawrr-mantis-x.jpg
+/images/bikes/arctic-leopard-exe.jpg
+/images/bikes/stealth-bomber-3000w.jpg
+
+If the files do not exist yet, use clean placeholder cards and make it obvious where I should drop images later.
+
+SITE PAGES:
+1. Home
+2. Bikes / Catalog
+3. Product detail page
+4. Financing
+5. Service
+6. About
+7. Contact
+
+HOME PAGE SECTIONS:
+
+1. Animated hero
+Headline:
+Electric Motion. Activated.
+
+Subheadline:
+High-performance electric motos, e-bikes, parts, financing, and support for the next generation of riders.
+
+Buttons:
+Shop Bikes
+Explore Financing
+
+Hero should include:
+- product silhouette placeholder
+- animated dust/smoke particles
+- motion streaks
+- subtle grid/parallax background
+- premium powersports feel
+
+2. Trust bar
+Include:
+- Fast shipping
+- Financing options
+- Expert setup
+- Parts & service support
+
+3. Featured Bikes
+Show product cards for:
+- Talaria MX5
+- Sur Ron Light Bee X
+- E-Ride Pro SS
+- Rawrr Mantis X
+- Ventus V1+
+
+Each card:
+- image
+- badge
+- price label
+- short description
+- View Details button
+- hover lift animation
+
+4. Shop by Category
+Create categories:
+- Electric Dirt Bikes
+- Street / Urban E-Motos
+- Youth / Entry-Level
+- Performance Builds
+- Parts & Accessories
+- Service & Support
+
+5. Performance section
+Animated spec cards:
+- Instant Torque
+- Low Maintenance
+- Quiet Power
+- Trail Ready
+- Urban Capable
+
+6. Why Kinetic Moto Sports
+Use this copy:
+Kinetic Moto Sports helps riders choose the right electric platform, configure it correctly, and support it after the sale. We are building a modern electric powersports dealership focused on performance, education, financing, and long-term service.
+
+7. Financing section
+Mention:
+- Shop Pay
+- Katapult
+- Synchrony
+
+Use placeholder logo cards. Do not use real logos unless I provide them.
+
+Copy:
+Flexible financing options are planned so riders can get into the right electric moto without waiting years to start.
+
+8. Service & Support
+Include:
+- Assembly
+- Setup
+- Parts
+- Repairs
+- Upgrades
+- Future showroom / service center
+
+9. Final CTA
+Headline:
+Ready to activate your ride?
+
+Buttons:
+Shop Bikes
+Contact Us
+
+CATALOG PAGE:
+Build a product grid with:
+- search/filter placeholder
+- category filter
+- product cards
+- responsive layout
+- premium catalog feel
+
+This should feel like a deeper dealer catalog, not a single-product landing page.
+
+PRODUCT DETAIL PAGE:
+For each product:
+- large animated hero
+- product image
+- product name
+- badge
+- price label
+- CTA buttons:
+  Request Quote
+  Ask About Financing
+- spec grid
+- description
+- financing callout
+- related bikes
+- contact form CTA
+
+FINANCING PAGE:
+Create a clean page explaining:
+- financing options coming / available
+- Shop Pay, Katapult, Synchrony placeholders
+- customer can contact for prequalification or payment options
+
+SERVICE PAGE:
+Position Kinetic Moto Sports as more than a reseller:
+- setup
+- assembly
+- diagnostics
+- repairs
+- parts sourcing
+- upgrades
+- future service center
+
+ABOUT PAGE:
+Tell the story:
+Kinetic Moto Sports was created to bring a more modern, technical, and trustworthy electric moto buying experience to riders. The goal is to combine online catalog depth with real technical guidance, support, financing, and future local service.
+
+CONTACT PAGE:
+Include:
+- contact form UI
+- email placeholder
+- phone placeholder
+- location: Washington / Pacific Northwest
+- “Tell us what bike you’re interested in” field
+
+MOTION REQUIREMENTS:
+Use Framer Motion for:
+- hero entrance
+- scroll reveal sections
+- product card hover lift
+- animated spec cards
+- subtle particle or motion streak background
+- page transitions if simple
+
+Do not overdo animations. Keep it premium and smooth.
+
+CODE REQUIREMENTS:
+- Make code clean and simple
+- Use reusable components:
+  Header
+  Footer
+  Hero
+  ProductCard
+  ProductGrid
+  CategoryCard
+  MotionBackground
+  CTASection
+- Product data should be in one easy file
+- Make it easy for me to replace images and edit products
+- Make sure npm run build passes
+
+DELIVERABLE:
+Build the site now.
+
+After building, give me:
+1. exact install commands
+2. exact run commands
+3. where to replace bike images
+4. where to edit products
+5. how to deploy to Vercel
+6. how to connect GoDaddy domain later
