@@ -14,8 +14,8 @@ export default function Hero() {
       {/* Cinematic background image with Ken Burns motion. */}
       <div aria-hidden className="absolute inset-0 -z-10">
         <motion.div
-          initial={{ scale: 1.08, x: "-2%" }}
-          animate={{ scale: 1.18, x: "2%" }}
+          initial={{ scale: 1, x: "-1.5%" }}
+          animate={{ scale: 1.1, x: "1.5%" }}
           transition={{ duration: 22, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
           className="absolute inset-0"
         >
