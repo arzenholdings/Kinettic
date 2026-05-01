@@ -1,44 +1,52 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight, Zap } from "lucide-react";
 import Image from "next/image";
-import MotionBackground from "./MotionBackground";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 const HERO_IMAGE = "/images/bikes/sur-ron-light-bee-x.jpg";
 
 export default function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-graphite-950">
-      <MotionBackground variant="hero" />
+    <section className="relative isolate overflow-hidden">
+      {/* Dark gradient background. */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[radial-gradient(80%_60%_at_30%_30%,#1a1d24_0%,#0a0b0e_55%,#06070a_100%)]"
+      />
 
-      <div className="container-page relative z-10 grid items-center gap-10 pb-16 pt-20 md:pb-24 md:pt-24 lg:grid-cols-12 lg:gap-8 lg:pb-32 lg:pt-28">
-        {/* LEFT — content */}
-        <div className="relative lg:col-span-6">
+      {/* Subtle dust / noise overlay across the whole hero. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 noise opacity-[0.18] mix-blend-overlay"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 grunge-overlay opacity-40"
+      />
+
+      <div className="container-page relative grid items-center gap-y-12 pb-20 pt-16 md:pb-28 md:pt-24 lg:grid-cols-12 lg:gap-x-6 lg:pb-36 lg:pt-28">
+        {/* LEFT — headline + CTA */}
+        <div className="relative z-20 lg:col-span-5">
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex w-fit items-center gap-2 border border-electric-500/40 bg-black/60 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.28em] text-cyan-glow backdrop-blur"
+            className="text-[11px] font-bold uppercase tracking-[0.32em] text-electric-400"
           >
-            <Zap className="h-3 w-3" />
-            Pacific Northwest · Online Dealership
+            Pacific Northwest · Electric Powersports
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 28 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 0.05, ease: [0.2, 0.8, 0.2, 1] }}
-            className="mt-6 font-black uppercase italic leading-[0.86] tracking-[-0.04em] text-6xl sm:text-7xl lg:text-[5.75rem] xl:text-[6.5rem]"
+            className="mt-5 font-black uppercase italic leading-[0.85] tracking-[-0.045em] text-6xl sm:text-7xl lg:text-[5.5rem] xl:text-[6.5rem]"
           >
-            <span className="block text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.85)]">
-              Electric
-            </span>
-            <span className="block text-gradient-electric drop-shadow-[0_4px_30px_rgba(0,0,0,0.85)]">
-              Motion.
-            </span>
-            <span className="relative block text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.85)]">
+            <span className="block text-white">Electric</span>
+            <span className="block text-gradient-electric">Motion.</span>
+            <span className="relative block text-white">
               Activated.
               <motion.span
                 aria-hidden
@@ -54,7 +62,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-7 max-w-xl text-lg font-medium text-white/85 sm:text-xl"
+            className="mt-7 max-w-xl text-lg font-medium text-white/80 sm:text-xl"
           >
             Built for performance. Tuned for the next generation of riding —
             instant torque, silent power, premium platforms ready to launch.
@@ -98,52 +106,61 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* RIGHT — large real bike image, no icons / orbs / rings */}
+        {/* RIGHT — large bike, overflows the column edge, slight overlap. */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.15, ease: [0.2, 0.8, 0.2, 1] }}
-          className="relative lg:col-span-6"
+          initial={{ opacity: 0, scale: 0.97, x: 40 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 1.1, delay: 0.15, ease: [0.2, 0.8, 0.2, 1] }}
+          className="relative z-10 lg:col-span-7"
         >
-          <div className="relative aspect-[5/4] w-full overflow-hidden lg:aspect-[4/5] xl:aspect-[5/4]">
-            {/* Slow zoom + slight pan, contrast-graded for moto feel. */}
-            <motion.div
-              initial={{ scale: 1, x: "-1.5%" }}
-              animate={{ scale: 1.1, x: "1.5%" }}
-              transition={{
-                duration: 16,
-                ease: "easeInOut",
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-              className="absolute inset-0"
-              style={{
-                filter: "contrast(1.15) saturate(0.9) brightness(0.85)",
-              }}
-            >
-              <Image
-                src={HERO_IMAGE}
-                alt="Sur Ron Light Bee X electric dirt bike"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-center"
-              />
-            </motion.div>
+          {/* Soft pad shadow under the bike. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-8 bottom-2 h-12 rounded-[50%] bg-black/70 blur-2xl"
+          />
 
-            {/* Dark gradient overlay — keeps the bike the focal point */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-l from-transparent via-black/15 to-graphite-950/85" />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-graphite-950 via-graphite-950/10 to-graphite-950/40" />
+          {/* Edge glow behind bike — soft, only behind, no ring. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_55%_at_60%_45%,rgba(125,249,255,0.18),transparent_70%)] blur-2xl"
+          />
 
-            {/* Tight cyan rim glow on right edge only */}
-            <div className="pointer-events-none absolute -right-32 top-1/3 h-[20rem] w-[20rem] rounded-full bg-electric-500/15 blur-[120px]" />
+          <div className="relative w-full lg:-mr-12 xl:-mr-24">
+            <div className="relative aspect-[4/3] w-full overflow-hidden">
+              {/* Slow zoom + horizontal drift on a continuous reverse loop. */}
+              <motion.div
+                initial={{ scale: 1, x: "-2%" }}
+                animate={{ scale: 1.1, x: "2%" }}
+                transition={{
+                  duration: 16,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+                className="absolute inset-0"
+                style={{
+                  filter: "contrast(1.15) saturate(0.92) brightness(0.88)",
+                }}
+              >
+                <Image
+                  src={HERO_IMAGE}
+                  alt="Sur Ron Light Bee X electric dirt bike"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  className="object-cover object-center"
+                />
+              </motion.div>
 
-            {/* Vignette */}
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_85%_at_55%_45%,transparent_40%,rgba(0,0,0,0.85)_100%)]" />
-
-            {/* Grunge + grain */}
-            <div className="pointer-events-none absolute inset-0 grunge-overlay opacity-50" />
-            <div className="pointer-events-none absolute inset-0 noise opacity-[0.14] mix-blend-overlay" />
+              {/* Left-edge fade so the bike merges with the dark page bg. */}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-graphite-950 via-graphite-950/30 to-transparent" />
+              {/* Bottom fade for grounding. */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-graphite-950 to-transparent" />
+              {/* Vignette. */}
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_85%_at_55%_50%,transparent_45%,rgba(0,0,0,0.85)_100%)]" />
+              {/* Dust / grain over image. */}
+              <div className="pointer-events-none absolute inset-0 noise opacity-[0.15] mix-blend-overlay" />
+            </div>
           </div>
         </motion.div>
       </div>
