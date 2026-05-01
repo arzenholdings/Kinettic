@@ -2,13 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Send, CheckCircle2 } from "lucide-react";
+import { Send, CheckCircle2, Loader2 } from "lucide-react";
 
 export default function ContactForm() {
   const params = useSearchParams();
   const initialBike = params.get("bike") ?? "";
 
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
+    "idle",
+  );
+  const [errorMsg, setErrorMsg] = useState<string>("");
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -29,13 +32,35 @@ export default function ContactForm() {
     setForm((f) => ({ ...f, [key]: value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // Wire this up to a real backend (email/CRM/Vercel API route) when ready.
-    setSubmitted(true);
+    if (status === "submitting") return;
+
+    setStatus("submitting");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setErrorMsg(data?.error ?? "Failed to send. Please try again.");
+        setStatus("error");
+        return;
+      }
+
+      setStatus("success");
+    } catch {
+      setErrorMsg("Network error. Please try again.");
+      setStatus("error");
+    }
   }
 
-  if (submitted) {
+  if (status === "success") {
     return (
       <div className="card-surface p-8 text-center">
         <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-electric-500/40 bg-electric-500/10 text-cyan-glow">
@@ -50,6 +75,8 @@ export default function ContactForm() {
     );
   }
 
+  const submitting = status === "submitting";
+
   return (
     <form onSubmit={handleSubmit} className="card-surface space-y-4 p-6">
       <div className="grid gap-4 sm:grid-cols-2">
@@ -61,6 +88,7 @@ export default function ContactForm() {
             onChange={(e) => update("name", e.target.value)}
             className="input"
             placeholder="Jamie Rivers"
+            disabled={submitting}
           />
         </Field>
         <Field label="Email">
@@ -71,6 +99,7 @@ export default function ContactForm() {
             onChange={(e) => update("email", e.target.value)}
             className="input"
             placeholder="you@email.com"
+            disabled={submitting}
           />
         </Field>
         <Field label="Phone (optional)">
@@ -80,6 +109,7 @@ export default function ContactForm() {
             onChange={(e) => update("phone", e.target.value)}
             className="input"
             placeholder="(555) 555-5555"
+            disabled={submitting}
           />
         </Field>
         <Field label="Tell us what bike you're interested in">
@@ -89,6 +119,7 @@ export default function ContactForm() {
             onChange={(e) => update("bike", e.target.value)}
             className="input"
             placeholder="e.g. Talaria MX5"
+            disabled={submitting}
           />
         </Field>
       </div>
@@ -100,15 +131,34 @@ export default function ContactForm() {
           onChange={(e) => update("message", e.target.value)}
           className="input resize-none"
           placeholder="What kind of riding are you doing? Any questions on financing, setup, or fit?"
+          disabled={submitting}
         />
       </Field>
+
+      {status === "error" && errorMsg && (
+        <div
+          role="alert"
+          className="rounded-xl border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200"
+        >
+          {errorMsg}
+        </div>
+      )}
+
       <div className="flex items-center justify-between gap-3">
         <p className="text-xs text-white/50">
           We respond within one business day.
         </p>
-        <button type="submit" className="btn-primary">
-          <Send className="h-4 w-4" />
-          Send Message
+        <button
+          type="submit"
+          className="btn-primary disabled:cursor-not-allowed disabled:opacity-70"
+          disabled={submitting}
+        >
+          {submitting ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : (
+            <Send className="h-4 w-4" />
+          )}
+          {submitting ? "Sending…" : "Send Message"}
         </button>
       </div>
 
@@ -130,6 +180,9 @@ export default function ContactForm() {
         :global(.input:focus) {
           border-color: rgba(34, 184, 255, 0.6);
           box-shadow: 0 0 0 3px rgba(34, 184, 255, 0.12);
+        }
+        :global(.input:disabled) {
+          opacity: 0.6;
         }
       `}</style>
     </form>
