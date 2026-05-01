@@ -8,20 +8,28 @@ import { ArrowRight } from "lucide-react";
 export default function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-[#06070a]">
+      {/* Charcoal base — minimal blue tint. */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(80%_60%_at_30%_30%,#15171d_0%,#0a0b0e_55%,#06070a_100%)]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(85%_65%_at_30%_30%,#13151a_0%,#0a0b0e_55%,#050507_100%)]"
+      />
+      {/* Page-wide grit. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 noise opacity-[0.22] mix-blend-overlay"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 noise opacity-[0.18] mix-blend-overlay"
+        className="pointer-events-none absolute inset-0 grunge-overlay opacity-50"
       />
+      {/* Edge vignette across the whole hero. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 grunge-overlay opacity-40"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_85%_at_50%_50%,transparent_45%,rgba(0,0,0,0.85)_100%)]"
       />
 
       <div className="container-page relative grid items-center gap-y-12 pb-20 pt-16 md:pb-28 md:pt-24 lg:grid-cols-12 lg:gap-x-6 lg:pb-36 lg:pt-28">
+        {/* LEFT — content */}
         <div className="relative z-20 lg:col-span-5">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -36,7 +44,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 0.05, ease: [0.2, 0.8, 0.2, 1] }}
-            className="mt-5 font-black uppercase italic leading-[0.85] tracking-[-0.045em] text-6xl sm:text-7xl lg:text-[5.5rem] xl:text-[6.5rem]"
+            className="mt-5 font-black uppercase italic leading-[0.82] tracking-[-0.06em] text-6xl sm:text-7xl lg:text-[6rem] xl:text-[7rem]"
           >
             <span className="block text-white">Electric</span>
             <span className="block text-gradient-electric">Motion.</span>
@@ -70,7 +78,7 @@ export default function Hero() {
           >
             <Link href="/bikes" className="btn-moto">
               Shop Bikes
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4" strokeWidth={2.75} />
             </Link>
             <Link href="/financing" className="btn-moto-ghost">
               Explore Financing
@@ -100,24 +108,34 @@ export default function Hero() {
           </motion.div>
         </div>
 
+        {/* RIGHT — bike, integrated into the scene */}
         <motion.div
           initial={{ opacity: 0, scale: 0.97, x: 40 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 1.1, delay: 0.15, ease: [0.2, 0.8, 0.2, 1] }}
           className="relative z-10 lg:col-span-7"
         >
+          {/* Heavy ground shadow under bike. */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-8 -bottom-2 h-14 bg-black/70 blur-3xl"
+            className="pointer-events-none absolute inset-x-12 -bottom-6 h-20 bg-black blur-3xl opacity-90"
             style={{ borderRadius: "50%" }}
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_55%_at_60%_45%,rgba(125,249,255,0.18),transparent_70%)] blur-2xl"
+            className="pointer-events-none absolute inset-x-24 bottom-0 h-10 bg-black blur-2xl opacity-80"
+            style={{ borderRadius: "50%" }}
+          />
+
+          {/* Tight rim glow behind bike — cyan accent only. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(50%_45%_at_65%_45%,rgba(125,249,255,0.12),transparent_70%)] blur-2xl"
           />
 
           <div className="relative w-full lg:-mr-12 xl:-mr-24">
             <div className="relative aspect-[4/3] w-full overflow-hidden">
+              {/* Slow Ken Burns + harder grade for blacker, punchier image. */}
               <motion.div
                 initial={{ scale: 1, x: "-2%" }}
                 animate={{ scale: 1.1, x: "2%" }}
@@ -128,7 +146,10 @@ export default function Hero() {
                   repeatType: "reverse",
                 }}
                 className="absolute inset-0"
-                style={{ filter: "contrast(1.15) saturate(0.92) brightness(0.88)" }}
+                style={{
+                  filter:
+                    "contrast(1.28) saturate(0.85) brightness(0.78)",
+                }}
               >
                 <Image
                   src="/images/bikes/sur-ron-light-bee-x.jpg"
@@ -140,14 +161,35 @@ export default function Hero() {
                 />
               </motion.div>
 
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#06070a] via-[#06070a]/30 to-transparent" />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#06070a] to-transparent" />
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_85%_at_55%_50%,transparent_45%,rgba(0,0,0,0.85)_100%)]" />
-              <div className="pointer-events-none absolute inset-0 noise opacity-[0.15] mix-blend-overlay" />
+              {/* Stronger left fade so bike emerges from darkness. */}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#05060a] via-[#05060a]/75 to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-[#05060a] via-[#05060a]/40 to-transparent" />
+
+              {/* Bottom fade — bike grounds into shadow. */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#05060a] via-[#05060a]/55 to-transparent" />
+
+              {/* Top edge slight darken. */}
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-[#05060a]/70 to-transparent" />
+
+              {/* Vignette focuses center. */}
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(110%_85%_at_60%_50%,transparent_38%,rgba(0,0,0,0.95)_100%)]" />
+
+              {/* Foreground dust haze at the bottom. */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-[radial-gradient(80%_100%_at_50%_100%,rgba(0,0,0,0.55),transparent_70%)]" />
+
+              {/* Heavier grain over image. */}
+              <div className="pointer-events-none absolute inset-0 noise opacity-[0.22] mix-blend-overlay" />
+              <div className="pointer-events-none absolute inset-0 grunge-overlay opacity-35" />
             </div>
           </div>
         </motion.div>
       </div>
+
+      {/* Foreground dust haze across the whole hero bottom. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-32 bg-gradient-to-t from-[#05060a] via-[#05060a]/60 to-transparent"
+      />
 
       <div className="absolute inset-x-0 bottom-0 h-px divider-line" />
     </section>
