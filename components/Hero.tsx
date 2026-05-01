@@ -5,18 +5,13 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
-const HERO_IMAGE = "/images/bikes/sur-ron-light-bee-x.jpg";
-
 export default function Hero() {
   return (
-    <section className="relative isolate overflow-hidden">
-      {/* Dark gradient background. */}
+    <section className="relative isolate overflow-hidden bg-[#06070a]">
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(80%_60%_at_30%_30%,#1a1d24_0%,#0a0b0e_55%,#06070a_100%)]"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(80%_60%_at_30%_30%,#15171d_0%,#0a0b0e_55%,#06070a_100%)]"
       />
-
-      {/* Subtle dust / noise overlay across the whole hero. */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 noise opacity-[0.18] mix-blend-overlay"
@@ -27,16 +22,15 @@ export default function Hero() {
       />
 
       <div className="container-page relative grid items-center gap-y-12 pb-20 pt-16 md:pb-28 md:pt-24 lg:grid-cols-12 lg:gap-x-6 lg:pb-36 lg:pt-28">
-        {/* LEFT — headline + CTA */}
         <div className="relative z-20 lg:col-span-5">
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="text-[11px] font-bold uppercase tracking-[0.32em] text-electric-400"
           >
             Pacific Northwest · Electric Powersports
-          </motion.div>
+          </motion.p>
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -106,20 +100,17 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* RIGHT — large bike, overflows the column edge, slight overlap. */}
         <motion.div
           initial={{ opacity: 0, scale: 0.97, x: 40 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 1.1, delay: 0.15, ease: [0.2, 0.8, 0.2, 1] }}
           className="relative z-10 lg:col-span-7"
         >
-          {/* Soft pad shadow under the bike. */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-8 bottom-2 h-12 rounded-[50%] bg-black/70 blur-2xl"
+            className="pointer-events-none absolute inset-x-8 -bottom-2 h-14 bg-black/70 blur-3xl"
+            style={{ borderRadius: "50%" }}
           />
-
-          {/* Edge glow behind bike — soft, only behind, no ring. */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_55%_at_60%_45%,rgba(125,249,255,0.18),transparent_70%)] blur-2xl"
@@ -127,7 +118,6 @@ export default function Hero() {
 
           <div className="relative w-full lg:-mr-12 xl:-mr-24">
             <div className="relative aspect-[4/3] w-full overflow-hidden">
-              {/* Slow zoom + horizontal drift on a continuous reverse loop. */}
               <motion.div
                 initial={{ scale: 1, x: "-2%" }}
                 animate={{ scale: 1.1, x: "2%" }}
@@ -138,12 +128,10 @@ export default function Hero() {
                   repeatType: "reverse",
                 }}
                 className="absolute inset-0"
-                style={{
-                  filter: "contrast(1.15) saturate(0.92) brightness(0.88)",
-                }}
+                style={{ filter: "contrast(1.15) saturate(0.92) brightness(0.88)" }}
               >
                 <Image
-                  src={HERO_IMAGE}
+                  src="/images/bikes/sur-ron-light-bee-x.jpg"
                   alt="Sur Ron Light Bee X electric dirt bike"
                   fill
                   priority
@@ -152,13 +140,9 @@ export default function Hero() {
                 />
               </motion.div>
 
-              {/* Left-edge fade so the bike merges with the dark page bg. */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-graphite-950 via-graphite-950/30 to-transparent" />
-              {/* Bottom fade for grounding. */}
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-graphite-950 to-transparent" />
-              {/* Vignette. */}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#06070a] via-[#06070a]/30 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#06070a] to-transparent" />
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_85%_at_55%_50%,transparent_45%,rgba(0,0,0,0.85)_100%)]" />
-              {/* Dust / grain over image. */}
               <div className="pointer-events-none absolute inset-0 noise opacity-[0.15] mix-blend-overlay" />
             </div>
           </div>
