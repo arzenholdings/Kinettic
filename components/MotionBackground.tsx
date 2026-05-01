@@ -51,73 +51,65 @@ export default function MotionBackground({
 
       {variant === "hero" && (
         <>
-          {/* Light streaks. */}
+          {/* Light streaks — fewer and dimmer, mostly white. */}
           <motion.div
             initial={{ x: "-30%", opacity: 0 }}
-            animate={{ x: "120%", opacity: [0, 0.55, 0] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
-            className="absolute top-[22%] left-0 h-px w-1/3 bg-gradient-to-r from-transparent via-cyan-glow/80 to-transparent"
+            animate={{ x: "120%", opacity: [0, 0.35, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+            className="absolute top-[26%] left-0 h-px w-1/3 bg-gradient-to-r from-transparent via-white/55 to-transparent"
           />
           <motion.div
             initial={{ x: "-30%", opacity: 0 }}
-            animate={{ x: "120%", opacity: [0, 0.45, 0] }}
+            animate={{ x: "120%", opacity: [0, 0.3, 0] }}
             transition={{
-              duration: 9,
+              duration: 8,
               repeat: Infinity,
               ease: "linear",
               delay: 2,
             }}
-            className="absolute top-[58%] left-0 h-px w-1/2 bg-gradient-to-r from-transparent via-electric-500/70 to-transparent"
-          />
-          <motion.div
-            initial={{ x: "-30%", opacity: 0 }}
-            animate={{ x: "120%", opacity: [0, 0.4, 0] }}
-            transition={{
-              duration: 11,
-              repeat: Infinity,
-              ease: "linear",
-              delay: 4,
-            }}
-            className="absolute top-[80%] left-0 h-px w-2/3 bg-gradient-to-r from-transparent via-cyan-glow/40 to-transparent"
+            className="absolute top-[62%] left-0 h-px w-1/2 bg-gradient-to-r from-transparent via-cyan-glow/45 to-transparent"
           />
 
-          {/* Slow drifting bloom orbs. */}
+          {/* One drifting bloom — tight, off-canvas. */}
           <motion.div
-            animate={{ x: [0, 30, -10, 0], y: [0, -20, 10, 0] }}
-            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -left-32 top-1/3 h-[28rem] w-[28rem] rounded-full bg-electric-500/15 blur-3xl"
-          />
-          <motion.div
-            animate={{ x: [0, -20, 20, 0], y: [0, 20, -10, 0] }}
+            animate={{ x: [0, 20, -10, 0], y: [0, -10, 10, 0] }}
             transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -right-32 top-1/2 h-[26rem] w-[26rem] rounded-full bg-cyan-glow/10 blur-3xl"
+            className="absolute -right-40 top-1/3 h-[24rem] w-[24rem] rounded-full bg-electric-500/10 blur-3xl"
           />
         </>
       )}
 
-      {particles.map((p) => (
-        <motion.span
-          key={p.key}
-          initial={{ opacity: 0, y: 0 }}
-          animate={{
-            opacity: [0, 0.55, 0],
-            y: [-10, -50, -100],
-          }}
-          transition={{
-            duration: p.duration,
-            delay: p.delay,
-            repeat: Infinity,
-            ease: "easeOut",
-          }}
-          style={{
-            top: `${p.top * 100}%`,
-            left: `${p.left * 100}%`,
-            width: `${p.size}px`,
-            height: `${p.size}px`,
-          }}
-          className="absolute rounded-full bg-cyan-glow shadow-[0_0_8px_rgba(125,249,255,0.7)]"
-        />
-      ))}
+      {particles.map((p) => {
+        // Mix dust-colored and faint-cyan particles (mostly dust).
+        const dust = p.key % 3 !== 0;
+        return (
+          <motion.span
+            key={p.key}
+            initial={{ opacity: 0, y: 0 }}
+            animate={{
+              opacity: [0, dust ? 0.4 : 0.5, 0],
+              y: [-10, -50, -100],
+            }}
+            transition={{
+              duration: p.duration,
+              delay: p.delay,
+              repeat: Infinity,
+              ease: "easeOut",
+            }}
+            style={{
+              top: `${p.top * 100}%`,
+              left: `${p.left * 100}%`,
+              width: `${p.size}px`,
+              height: `${p.size}px`,
+            }}
+            className={
+              dust
+                ? "absolute rounded-full bg-white/70 shadow-[0_0_4px_rgba(255,255,255,0.4)]"
+                : "absolute rounded-full bg-cyan-glow shadow-[0_0_6px_rgba(125,249,255,0.5)]"
+            }
+          />
+        );
+      })}
     </div>
   );
 }
