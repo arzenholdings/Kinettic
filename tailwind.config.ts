@@ -39,6 +39,8 @@ const config: Config = {
       boxShadow: {
         glow: "0 0 40px rgba(34,184,255,0.25)",
         "glow-strong": "0 0 80px rgba(34,184,255,0.45)",
+        "glow-card":
+          "0 20px 60px -20px rgba(34,184,255,0.35), 0 0 0 1px rgba(125,249,255,0.25)",
       },
       keyframes: {
         "pulse-glow": {
@@ -54,11 +56,16 @@ const config: Config = {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-8px)" },
         },
+        "shine-sweep": {
+          "0%": { transform: "translateX(-110%)" },
+          "100%": { transform: "translateX(110%)" },
+        },
       },
       animation: {
         "pulse-glow": "pulse-glow 3s ease-in-out infinite",
         streak: "streak 6s linear infinite",
         float: "float 6s ease-in-out infinite",
+        "shine-sweep": "shine-sweep 1.4s ease-in-out",
       },
     },
   },
