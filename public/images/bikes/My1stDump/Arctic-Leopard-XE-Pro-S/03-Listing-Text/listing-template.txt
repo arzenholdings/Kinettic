@@ -1,0 +1,22 @@
+﻿TITLE: Arctic Leopard XE Pro S
+HANDLE (optional): arctic-leopard-xe-pro-s
+CATEGORY: Electric Dirt Bike / Parts (set later)
+PRICE: TBD
+SUMMARY:
+- (1 sentence hook)
+SPECS:
+- Battery:
+- Motor:
+- Top Speed:
+- Range:
+- Charge Time:
+- Suspension:
+- Weight:
+WARRANTY:
+- Manufacturer warranty + Kinetic support coordination
+SHIPPING:
+- Direct ship from distribution network; assembly required
+SEO TITLE:
+- Arctic Leopard XE Pro S | Kinetic Moto Sports
+META:
+- TBD

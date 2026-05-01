@@ -1,0 +1,22 @@
+﻿TITLE: Ventus V1
+HANDLE (optional): ventus-v1
+CATEGORY: Electric Dirt Bike / Parts (set later)
+PRICE: TBD
+SUMMARY:
+- (1 sentence hook)
+SPECS:
+- Battery:
+- Motor:
+- Top Speed:
+- Range:
+- Charge Time:
+- Suspension:
+- Weight:
+WARRANTY:
+- Manufacturer warranty + Kinetic support coordination
+SHIPPING:
+- Direct ship from distribution network; assembly required
+SEO TITLE:
+- Ventus V1 | Kinetic Moto Sports
+META:
+- TBD

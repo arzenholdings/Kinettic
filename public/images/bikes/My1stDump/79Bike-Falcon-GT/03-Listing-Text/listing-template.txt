@@ -1,0 +1,22 @@
+﻿TITLE: 79Bike Falcon GT
+HANDLE (optional): 79bike-falcon-gt
+CATEGORY: Electric Dirt Bike / Parts (set later)
+PRICE: TBD
+SUMMARY:
+- (1 sentence hook)
+SPECS:
+- Battery:
+- Motor:
+- Top Speed:
+- Range:
+- Charge Time:
+- Suspension:
+- Weight:
+WARRANTY:
+- Manufacturer warranty + Kinetic support coordination
+SHIPPING:
+- Direct ship from distribution network; assembly required
+SEO TITLE:
+- 79Bike Falcon GT | Kinetic Moto Sports
+META:
+- TBD

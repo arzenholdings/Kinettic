@@ -1,0 +1,22 @@
+﻿TITLE: Surron Ultra Bee 21KW
+HANDLE (optional): surron-ultra-bee-21kw
+CATEGORY: Electric Dirt Bike / Parts (set later)
+PRICE: TBD
+SUMMARY:
+- (1 sentence hook)
+SPECS:
+- Battery:
+- Motor:
+- Top Speed:
+- Range:
+- Charge Time:
+- Suspension:
+- Weight:
+WARRANTY:
+- Manufacturer warranty + Kinetic support coordination
+SHIPPING:
+- Direct ship from distribution network; assembly required
+SEO TITLE:
+- Surron Ultra Bee 21KW | Kinetic Moto Sports
+META:
+- TBD
