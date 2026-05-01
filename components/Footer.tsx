@@ -59,11 +59,25 @@ export default function Footer() {
             </li>
             <li className="flex items-start gap-2">
               <Mail className="mt-0.5 h-4 w-4 text-electric-400" />
-              hello@kineticmotosports.com
+              <a
+                href="mailto:sales@kinetic-moto.com"
+                className="hover:text-cyan-glow"
+              >
+                sales@kinetic-moto.com
+              </a>
+            </li>
+            <li className="flex items-start gap-2">
+              <Mail className="mt-0.5 h-4 w-4 text-electric-400" />
+              <a
+                href="mailto:info@kinetic-moto.com"
+                className="hover:text-cyan-glow"
+              >
+                info@kinetic-moto.com
+              </a>
             </li>
             <li className="flex items-start gap-2">
               <Phone className="mt-0.5 h-4 w-4 text-electric-400" />
-              (Coming soon)
+              Available by email first
             </li>
           </ul>
         </div>

@@ -19,8 +19,8 @@ export default function ContactPage() {
         <div className="container-page relative py-20">
           <SectionHeading
             eyebrow="Contact"
-            title="Talk to a real human"
-            description="Questions about a specific bike, setup, financing, or service? Send us a note — we respond fast."
+            title="Talk to Kinetic Moto Sports"
+            description="Questions about a bike, financing, setup, parts, or service? Send us a message and we'll get back to you."
           />
         </div>
       </section>
@@ -29,16 +29,32 @@ export default function ContactPage() {
         <div className="container-page grid gap-10 py-16 lg:grid-cols-3">
           <div className="space-y-6 lg:col-span-1">
             <div className="card-surface p-6">
-              <div className="flex items-center gap-3">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-electric-500/40 bg-electric-500/10 text-cyan-glow">
+              <div className="flex items-start gap-3">
+                <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-electric-500/40 bg-electric-500/10 text-cyan-glow">
                   <Mail className="h-4 w-4" />
                 </span>
-                <div>
-                  <div className="text-[10px] uppercase tracking-[0.2em] text-white/40">
-                    Email
+                <div className="space-y-3">
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.2em] text-white/40">
+                      Primary Sales
+                    </div>
+                    <a
+                      href="mailto:sales@kinetic-moto.com"
+                      className="text-sm font-medium text-white hover:text-cyan-glow"
+                    >
+                      sales@kinetic-moto.com
+                    </a>
                   </div>
-                  <div className="text-sm font-medium text-white">
-                    hello@kineticmotosports.com
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.2em] text-white/40">
+                      General Info
+                    </div>
+                    <a
+                      href="mailto:info@kinetic-moto.com"
+                      className="text-sm font-medium text-white hover:text-cyan-glow"
+                    >
+                      info@kinetic-moto.com
+                    </a>
                   </div>
                 </div>
               </div>
@@ -53,7 +69,7 @@ export default function ContactPage() {
                     Phone
                   </div>
                   <div className="text-sm font-medium text-white">
-                    Coming soon
+                    Available by email first
                   </div>
                 </div>
               </div>
@@ -79,8 +95,8 @@ export default function ContactPage() {
                 Service hours
               </div>
               <p className="mt-2 text-sm text-white/65">
-                Online support available throughout the week. Local
-                showroom hours will be posted as the storefront launches.
+                Online support available throughout the week. Local showroom
+                and service hours will be posted as we move toward launch.
               </p>
             </div>
           </div>
